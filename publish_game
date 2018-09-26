@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# Copyright 2018 Bloomberg Finance L.P.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# Provide a script that publishes the generated git-adventure game
+# to github.
+
+# Arguments:
+# 1. The folder containing the game repo.
+# 2. The URL of the repo that the game will be published to.
+#
+# E.g. let's assume we are in the following situation
+#
+# $ ls
+# generated_game publish_game.sh
+#
+# Then we can publish the 'generated_game' to github via
+#
+# $ ./publish_game generated_game https://github.com/bloomberg/git-adventure-game.git
+
+set -x
+set -e
+
+if [ "$#" -ne 2 ]; then
+    echo "Illegal number of parameters"
+    echo "Usage: ./publish_game <game_folder> <github_url>"
+    exit 1
+fi
+
+LOCAL_GAME=${1}
+
+(
+    cd "${LOCAL_GAME}" || exit 1
+
+    REMOTE_URL=${2}
+    REMOTE_NAME=upstream
+
+    # Download all branches
+    git remote add -f "${REMOTE_NAME}" "${REMOTE_URL}"
+    # Delete them
+    git branch -r | grep -v master | sed -n "s/${REMOTE_NAME}\\///p" | xargs -n 1 git push --delete ${REMOTE_NAME}
+    # Publish all local branches
+    git push ${REMOTE_NAME} --all --force
+)

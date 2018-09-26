@@ -1,0 +1,6 @@
+# Default text files must be lf only for maximum unix compatibility.
+* text eol=lf
+
+# Windows bat files must be crlf to work on Windows.
+*.bat text eol=crlf
+

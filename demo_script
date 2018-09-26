@@ -1,0 +1,108 @@
+git init
+ls -a
+echo foo > foo; echo bar > bar; echo fizz > fizz; echo buzz > buzz; echo flip > flip; echo flop > flop; git status
+git add foo bar fizz buzz && git status
+git add flop; git commit
+git commit
+git status
+echo foo >> foo && git status
+echo bar >> bar && git add bar && git status
+mv fizz fizz2 && git mv buzz buzz2 && git status
+rm flip && git rm flop && git status
+git add .
+git commit -m “demo modify mv rm”
+echo dog > dog; echo cat > cat; echo bird > bird && git diff
+git diff dog
+git add dog && git status
+git diff
+git diff --staged
+git diff head
+git diff head^
+git diff head  -- cat 
+git diff head –stat
+git commit -a
+git commit -am “demo diff”
+git log
+git branch
+git branch demo_branch2
+git checkout demo_branch2
+git co -b demo_branch1
+git co -d demo_branch2
+git reset head^ && git status
+git reset head^ foo2 && git status
+git reset –hard && git status
+echo labradoodle > dog; echo “maine coon” > cat; echo eagle > bird; echo fizzy > fizz2 && git status
+git commit -am “demo branch”
+git diff –stat master
+git diff master – dog
+git show master
+git log
+git co master
+git merge demo_branch1
+cat dog
+git co -ours && git status 
+git diff head
+git merge –continue
+git merge –abort && git status
+git merge demo_branch1
+git co -theirs && git status 
+git merge –continue
+git status
+git diff –stat demo_branch1
+git log
+ls -a
+git config email=demo@mail.com
+cat .gitconfig
+git config username=demo 
+cat .git config
+git config alias.ci commit
+cat .git config
+touch hamster; git add hamster; git status
+git ci -m “demo config alias”
+git config –-global alias.logdog 'log --decorate --oneline --graph --all'
+cd ..
+mkdir remote_for_demo
+git init –bare
+cd ../demo #check
+git remote add dr ../remote_for_demo
+git remote
+git remote -v
+git remote show dr
+cd ..
+git clone remote_for_demo clone1
+git clone demo clone2
+cd clone2
+ls -a
+git status
+git br -a
+git remote -v
+cd ..
+mkdir clone3
+git init
+git add remote upstream ../dr
+git fetch
+git remote show upstream
+cd ../demo
+git push
+git show remote
+git push –all
+cd ../clone3
+git fetch
+git branch -a
+git status
+echo snake > snake; git add snake; git commit -m"snake"
+git rebase master
+git log
+echo horse > horse; git add horse; git commit -m"horse"
+git push upstream
+git push --force --all
+git grep labradoodle
+git grep dog -- dog
+git rev-list HEAD -- dog
+git grep dog $(git rev-list HEAD -- dog) -- dog
+git co master
+git cherry-pick demo_branch1
+ls
+git log
+git filter-branch --tree-filter 'rm flip flop' head
+
