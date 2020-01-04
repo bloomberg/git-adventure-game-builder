@@ -23,7 +23,7 @@ DIFFERENCE=$(git diff HEAD~4..HEAD~3)
 echo ${DIFFERENCE} | grep '+++ b/cauldron/leeches' > /dev/null 2>&1 || exit 1
 
 # And that the bad ingredient got filtered out.
-DIFFERENCE=$(git diff HEAD~6..HEAD)
+DIFFERENCE=$(git diff HEAD~7..HEAD)
 echo ${DIFFERENCE} | grep '+++ b/cauldron/crushed-lacewings'  > /dev/null 2>&1 && exit 1
 
 # We made it here -> rebase happended as intended!

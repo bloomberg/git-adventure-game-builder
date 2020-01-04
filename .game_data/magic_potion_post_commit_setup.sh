@@ -31,10 +31,11 @@ makeMagicPotion "knotgrass" "Add 2 bundles of knotgrass to the cauldron."
 makeMagicPotion "crushed-lacewings" "add 2 measures of the crushed lacewings to the cauldron"
 
 makeMagicPotion "stir" "Stir 4 times, clockwise."
+makeMagicPotion "Wave-brew" "Wave your wand then let potion brew for 80 minutes"
 
 # Wrong order
 makeMagicPotion "lacewing-flies" "Add 2 scoops of lacewing flies"
 makeMagicPotion "leeches" "Add 4 leeches to the cauldron."
 
 makeMagicPotion "Heat" "Heat for 30 seconds on a low heat"
-makeMagicPotion "Wave" "Wave your wand to complete this stage of the potion"
+makeMagicPotion "Wave-complete" "Wave your wand to complete this stage of the potion"
