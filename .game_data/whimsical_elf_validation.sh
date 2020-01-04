@@ -21,7 +21,8 @@ if [[ ! -f "${MD5}" ]] && [[ -f /sbin/md5 ]]; then
 fi
 
 compute_hash() {
-    hash=$(${MD5} < "$1" | cut -d ' ' -f 1)
+    # Remove any DOS newlines before checksum comparison
+    hash=$(tr -d "\r" < $1 | ${MD5} | cut -d ' ' -f 1)
     return 0
 }
 
